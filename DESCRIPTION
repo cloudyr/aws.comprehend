@@ -1,0 +1,18 @@
+Package: PACKAGENAME
+Type: Package
+Title: Package Template for 'the cloudyr project'
+Version: 0.1.21
+Date: 2016-04-14
+Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
+                    email = "thosjleeper@gmail.com"))
+Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
+Description: This is package template to be copied when creating new packages for the cloudyr project.
+License: GPL (>= 2)
+URL: https://github.com/cloudyr/PACKAGENAME
+BugReports: https://github.com/cloudyr/PACKAGENAME/issues
+Imports:
+    httr,
+    aws.signature
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
