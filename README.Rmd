@@ -12,7 +12,7 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "mykey",
            "AWS_DEFAULT_REGION" = "us-east-1")
 ```
 
-These can alternatively be set on the command line or via an `Renviron.site` or `.Renviron` file ([see here for instructions](http://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)).
+These can alternatively be set on the command line or via an `Renviron.site` or `.Renviron` file ([see here for instructions](https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)).
 
 
 ## Code Examples ##
@@ -24,9 +24,9 @@ library("PACKAGENAME")
 
 ## Installation ##
 
-[![CRAN](http://www.r-pkg.org/badges/version/PACKAGENAME)](http://cran.r-project.org/package=PACKAGENAME)
+[![CRAN](http://www.r-pkg.org/badges/version/PACKAGENAME)](https://cran.r-project.org/package=PACKAGENAME)
 [![Build Status](https://travis-ci.org/cloudyr/PACKAGENAME.png?branch=master)](https://travis-ci.org/cloudyr/PACKAGENAME)
-[![codecov.io](http://codecov.io/github/cloudyr/PACKAGENAME/coverage.svg?branch=master)](http://codecov.io/github/cloudyr/PACKAGENAME?branch=master)
+[![codecov.io](https://codecov.io/github/cloudyr/PACKAGENAME/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/PACKAGENAME?branch=master)
 
 This package is not yet on CRAN. To install the latest development version you can install from the cloudyr drat repository:
 
@@ -46,4 +46,4 @@ ghit::install_github("cloudyr/PACKAGENAME")
 
 
 ---
-[![cloudyr project logo](http://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
+[![cloudyr project logo](https://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
