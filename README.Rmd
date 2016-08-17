@@ -25,20 +25,21 @@ library("PACKAGENAME")
 ## Installation ##
 
 [![CRAN](http://www.r-pkg.org/badges/version/PACKAGENAME)](https://cran.r-project.org/package=PACKAGENAME)
-[![Build Status](https://travis-ci.org/cloudyr/PACKAGENAME.png?branch=master)](https://travis-ci.org/cloudyr/PACKAGENAME)
+[![Travis Build Status](https://travis-ci.org/cloudyr/PACKAGENAME.png?branch=master)](https://travis-ci.org/cloudyr/PACKAGENAME)
+[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/PROJECTNUMBER?svg=true)](https://ci.appveyor.com/project/cloudyr/PACKAGENAME)
 [![codecov.io](https://codecov.io/github/cloudyr/PACKAGENAME/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/PACKAGENAME?branch=master)
 
 This package is not yet on CRAN. To install the latest development version you can install from the cloudyr drat repository:
 
 ```R
 # latest stable version
-install.packages("PACKAGENAME", repos = c(getOption("repos"), "http://cloudyr.github.io/drat"))
+install.packages("PACKAGENAME", repos = c(cloudyr = "http://cloudyr.github.io/drat", getOption("repos")))
 ```
 
 Or, to pull a potentially unstable version directly from GitHub:
 
 ```R
-if(!require("ghit")){
+if (!require("ghit")) {
     install.packages("ghit")
 }
 ghit::install_github("cloudyr/PACKAGENAME")
