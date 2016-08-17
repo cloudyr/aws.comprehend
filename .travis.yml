@@ -1,6 +1,17 @@
 language: r
 sudo: false
 cache: packages
+matrix:
+  include:
+    - os: linux
+      dist: precise
+      sudo: false
+    - os: linux
+      dist: trusty
+    - os: osx
+      osx_image: xcode8
+    - os: osx
+      osx_image: beta-xcode6.2
 r_packages:
 - knitr
 - covr
