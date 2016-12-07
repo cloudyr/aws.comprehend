@@ -12,7 +12,7 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "mykey",
            "AWS_DEFAULT_REGION" = "us-east-1")
 ```
 
-These can alternatively be set on the command line or via an `Renviron.site` or `.Renviron` file ([see here for instructions](https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)).
+These can alternatively be set on the command line or via an `Renviron.site` or `.Renviron` file ([see here for instructions](https://cran.r-project.org/package=httr/vignettes/api-packages.html)).
 
 
 ## Code Examples ##
@@ -24,7 +24,7 @@ library("PACKAGENAME")
 
 ## Installation ##
 
-[![CRAN](http://www.r-pkg.org/badges/version/PACKAGENAME)](https://cran.r-project.org/package=PACKAGENAME)
+[![CRAN](https://www.r-pkg.org/badges/version/PACKAGENAME)](https://cran.r-project.org/package=PACKAGENAME)
 [![Travis Build Status](https://travis-ci.org/cloudyr/PACKAGENAME.png?branch=master)](https://travis-ci.org/cloudyr/PACKAGENAME)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/PROJECTNUMBER?svg=true)](https://ci.appveyor.com/project/cloudyr/PACKAGENAME)
 [![codecov.io](https://codecov.io/github/cloudyr/PACKAGENAME/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/PACKAGENAME?branch=master)
