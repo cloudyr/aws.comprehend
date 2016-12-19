@@ -38,6 +38,7 @@ library("PACKAGENAME")
 ## Installation
 
 [![CRAN](https://www.r-pkg.org/badges/version/PACKAGENAME)](https://cran.r-project.org/package=PACKAGENAME)
+![Downloads](https://cranlogs.r-pkg.org/badges/PACKAGENAME)
 [![Travis Build Status](https://travis-ci.org/cloudyr/PACKAGENAME.png?branch=master)](https://travis-ci.org/cloudyr/PACKAGENAME)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/PROJECTNUMBER?svg=true)](https://ci.appveyor.com/project/cloudyr/PACKAGENAME)
 [![codecov.io](https://codecov.io/github/cloudyr/PACKAGENAME/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/PACKAGENAME?branch=master)
