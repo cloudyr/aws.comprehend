@@ -14,7 +14,7 @@ Put your code here:
 
 ```R
 ## load package
-library("PACKAGENAME")
+library("aws.comprehend")
 
 ## code goes here
 

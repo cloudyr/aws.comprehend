@@ -1,6 +1,6 @@
-Contributions to **PACKAGENAME** are welcome from anyone and are best sent as pull requests on [the GitHub repository](https://github.com/cloudyr/PACKAGENAME/). This page provides some instructions to potential contributors about how to add to the package.
+Contributions to **aws.comprehend** are welcome from anyone and are best sent as pull requests on [the GitHub repository](https://github.com/cloudyr/aws.comprehend/). This page provides some instructions to potential contributors about how to add to the package.
 
- 1. Contributions can be submitted as [a pull request](https://help.github.com/articles/creating-a-pull-request/) on GitHub by forking or cloning the [repo](https://github.com/cloudyr/PACKAGENAME/), making changes and submitting the pull request.
+ 1. Contributions can be submitted as [a pull request](https://help.github.com/articles/creating-a-pull-request/) on GitHub by forking or cloning the [repo](https://github.com/cloudyr/aws.comprehend/), making changes and submitting the pull request.
  
  2. The cloudyr project follows [a consistent style guide](http://cloudyr.github.io/styleguide/index.html) across all of its packages. Please refer to this when editing package code.
  
@@ -8,11 +8,11 @@ Contributions to **PACKAGENAME** are welcome from anyone and are best sent as pu
  
  4. All contributions must be submitted consistent with the package license ([GPL-2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)).
  
- 5. Non-trivial contributions need to be noted in the `Authors@R` field in the [DESCRIPTION](https://github.com/cloudyr/PACKAGENAME/blob/master/DESCRIPTION). Just follow the format of the existing entries to add your name (and, optionally, email address). Substantial contributions should also be noted in [`inst/CITATION`](https://github.com/cloudyr/PACKAGENAME/blob/master/inst/CITATION).
+ 5. Non-trivial contributions need to be noted in the `Authors@R` field in the [DESCRIPTION](https://github.com/cloudyr/aws.comprehend/blob/master/DESCRIPTION). Just follow the format of the existing entries to add your name (and, optionally, email address). Substantial contributions should also be noted in [`inst/CITATION`](https://github.com/cloudyr/aws.comprehend/blob/master/inst/CITATION).
  
  6. The cloudyr project use royxgen code and documentation markup, so changes should be made to roxygen comments in the source code `.R` files. If changes are made, roxygen needs to be run. The easiest way to do this is a command line call to: `Rscript -e devtools::document()`. Please resolve any roxygen errors before submitting a pull request.
  
- 7. Please run `R CMD BUILD PACKAGENAME` and `R CMD CHECK PACKAGENAME_VERSION.tar.gz` before submitting the pull request to check for any errors.
+ 7. Please run `R CMD BUILD aws.comprehend` and `R CMD CHECK aws.comprehend_VERSION.tar.gz` before submitting the pull request to check for any errors.
  
 Some specific types of changes that you might make are:
 
@@ -20,9 +20,9 @@ Some specific types of changes that you might make are:
  
  2. Documentation-only changes (e.g., to Rd files, README, vignettes). This is great! All contributions are welcome.
  
- 3. New functionality. This is fine, but should be discussed on [the GitHub issues page](https://github.com/cloudyr/PACKAGENAME/issues) before submitting a pull request.
+ 3. New functionality. This is fine, but should be discussed on [the GitHub issues page](https://github.com/cloudyr/aws.comprehend/issues) before submitting a pull request.
  
- 3. Changes requiring a new package dependency should also be discussed on [the GitHub issues page](https://github.com/cloudyr/PACKAGENAME/issues) before submitting a pull request.
+ 3. Changes requiring a new package dependency should also be discussed on [the GitHub issues page](https://github.com/cloudyr/aws.comprehend/issues) before submitting a pull request.
  
  4. Message translations. These are very appreciated! The format is a pain, but if you're doing this I'm assuming you're already familiar with it.
 

@@ -36,24 +36,63 @@ Temporary session tokens are stored in environment variable `AWS_SESSION_TOKEN` 
 
 Here are some simple code examples:
 
-```{r}
+
+```r
 library("aws.comprehend")
 
 # simple language detection
 detect_language("This is a test sentence in English")
+```
 
+```
+##   LanguageCode     Score
+## 1           en 0.9945121
+```
+
+```r
 # multi-lingual language detection
 detect_language("A: ¡Hola! ¿Como está, usted?\nB: Ça va bien. Merci. Et toi?")
+```
 
+```
+##   LanguageCode     Score
+## 1           fr 0.6712779
+## 2           pt 0.2771675
+```
+
+```r
 # sentiment analysis
 detect_sentiment("I have never been happier. This is the best day ever.")
+```
 
+```
+##   Index Sentiment       Mixed    Negative    Neutral  Positive
+## 1     1  POSITIVE 0.002856119 0.003094881 0.03672606 0.9573229
+```
+
+```r
 # named entity recognition
 txt <- c("Amazon provides web services.", "Jeff is their leader.")
 detect_entities(txt)
+```
 
+```
+##   Index BeginOffset EndOffset     Score   Text         Type
+## 1     0           0         6 0.9960732 Amazon ORGANIZATION
+## 2     1           0         4 0.9994556   Jeff       PERSON
+```
+
+```r
 # key phrase detection
 detect_phrases(txt)
+```
+
+```
+##   Index BeginOffset EndOffset     Score         Text
+## 1     0           0         6 0.9884282       Amazon
+## 2     1          16        28 0.9975396 web services
+## 3     0           0         4 0.9950518         Jeff
+## 4     1           8        20 0.9918150 their leader
 ```
 
 All of the functions accept either a single character string or a character vector.
