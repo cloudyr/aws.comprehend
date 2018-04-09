@@ -3,7 +3,6 @@
 #' @param action A character string specifying the API action to take
 #' @param query An optional named list containing query string parameters and their character values.
 #' @param body A request body
-#' @param version A character string specifying the API version.
 #' @param region A character string containing an AWS region. If missing, the default \dQuote{us-east-1} is used.
 #' @param key A character string containing an AWS Access Key ID. The default is pulled from environment variable \dQuote{AWS_ACCESS_KEY_ID}.
 #' @param secret A character string containing an AWS Secret Access Key. The default is pulled from environment variable \dQuote{AWS_SECRET_ACCESS_KEY}.
@@ -17,14 +16,15 @@
 #' @importFrom aws.signature signature_v4_auth
 #' @export
 comprehendHTTP <- 
-function(action,
-         query = list(),
-         body = NULL,
-         region = NULL, 
-         key = NULL, 
-         secret = NULL, 
-         session_token = NULL,
-         ...) {
+function(
+  action,
+  query = list(),
+  body = NULL,
+  region = NULL, 
+  key = NULL, 
+  secret = NULL, 
+  session_token = NULL,
+...) {
     d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
     if (is.null(region) || region == "") {
         region <- "us-east-1"
