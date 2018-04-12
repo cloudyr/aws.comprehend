@@ -6,7 +6,7 @@ matrix:
   - os: linux
     dist: trusty
     sudo: required
-    env: R_CODECOV=true
+    env: DRAT_DEPLOY=true
   - os: osx
     osx_image: xcode9.2
   - os: osx
@@ -18,9 +18,10 @@ r_packages:
 - covr
 - drat
 after_success:
-- if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
-  drat.sh
+- R -q -e 'library("covr");codecov()'
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && test
+  $DRAT_DEPLOY == "true" && bash drat.sh
+- R -q -e "travisci::restart_last_build('cloudyr/awspack')"
 env:
   global:
-    secure: Mq17DdoagbiYtSN9cg3VKJDpBSMzEfyBGBUcu9fQsW1xesv62hD91gNbjn2sD4jkqh/NuQTl7eKTSDHMDZSztlS4wXwPyj9hg0xLPYN5BM0g7xcGmTzGervp24vISnMd/D8JKUVknZ1njWnLISmYAFugphQPK0ol2/sxBo7bvtQzL5oWkXdUl++NJL3tJlBnuN+bfJKne97Al9sK1dlMxUN07IUY1ORZFhievbuK4J3Ljp/oRj5vyd9nr/KpJIjHh4x2XEJsUo4C3wfCSgua/6h/iy3/k1F4ExKtgwoxF1v42VUuTbNs9aBRZA/DFR8T9lzywuVsSulC+NncnwPZ/i2rjX2KSxbivWnahpZ3Z2gcpvtXmcgSk3pJjtnWPAXWwMtS1PYA9BMZm88I+J6WgII/SVPDUpmpf1sP9pFcD3eNBb/PZB6zuE+xYGoJoxID4ivjpd+ldZsiAJyEhtu6ZjpBskAdm4ZzulzMMQfA5sDLdyDZzAjN3/XnAi4XBasK7NkVDSITK8RYB0vG0nHBS8OxoVbUidYJYVCZO+PLxpJpJWfMG5FTi/hQHyPw7+VVYT3dGkN30IpZbllzim51peaxeuAWuc7JpKr55MYBEfee51FAWbtiP7zfzEwW+3qtVCas4Pra5LNslQg+a4hn6cnlQbfB2ez+w/Ne4+yfOWk=
+    secure: fQc8C9AwSh85TZx8Ch2gcG/79W21RQgTfJUOH+tdAI9rFR+/qI25JHQPoY/6PWukvw9RSzdqR+kH6HW9IGE0UcOzoCif5eueTL+XDbaetI8VhXD42YTZnh9UoRp8uLMyM194Izu+my1ivGf/Ng10hoB6om9YrKDst7m9vD3H51yYcPo7w6uB8udCqB+HgLvm/zj4ourgTua6opXWp4T9P0/hOTr6YHWbFt3oBGeRgA0bmGOO79YehI5LxFs07wVBES0n8YLhBPdJCLI4qcyWR6Y64ZVmsupaMs6wpWJC33eiC/rL/U2TY63ImH4iOwJ0MmZw/RqnoFr7IqhsMnUEtwP9F8GiTxpZDwXk7hnhOQwLcav/SqSOkIbTHsGbjCN5EsaJiAAJJHuJqA2NSXov4IbrAd0W0TwIOqZ1BU50IfBIOlDyV1YpHwsPesqpHYQLmrZR3jknC5EVEt69gQ/aah4wDUJuj9IPIXJVwNoL0sDzdMbSHCvlljSvW+N2q1rT/k/0ju5V/EOepk/xdj75Sc6DSfNTe1FGJfd0IXYfhQdjM5iAVewQvbEjQch1aIm7QS8gCJXMYgIr9LEu72a0n8XIEh2Z0S2TcCz/gwQN53kIPrG7Og8w9CdcQ0TI2ZgOZ0n1p4W9ctfnro4ZsboMhDCmfJ0t056Nof4E+8EEqGk=
