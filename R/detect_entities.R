@@ -25,7 +25,7 @@ function(
         out <- comprehendHTTP(action = "BatchDetectEntities", body = bod, ...)
         # build response data frame
         x <- out$ResultList
-        x <- cbind(Index = x$Index, do.call("rbind", x$Entities))
+        x <- cbind(Index = rep(x$Index, unlist(lapply(x$Entities, nrow))), do.call("rbind", x$Entities))
         return(structure(x, ErrorList = out$ErrorList))
     } else {
         bod <- list(Text = text, LanguageCode = language)
