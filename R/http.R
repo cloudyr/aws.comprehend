@@ -17,9 +17,9 @@
 #' @author Thomas J. Leeper
 #' @import httr
 #' @importFrom jsonlite fromJSON toJSON
-#' @importFrom aws.signature signature_v4_auth
+#' @importFrom aws.signature signature_v4_auth locate_credentials
 #' @export
-comprehendHTTP <- 
+comprehendHTTP <-
 function(
   action,
   query = list(),
@@ -27,19 +27,19 @@ function(
   body = NULL,
   verbose = getOption("verbose", FALSE),
   region = Sys.getenv("AWS_DEFAULT_REGION","us-east-1"),
-  key = NULL, 
-  secret = NULL, 
+  key = NULL,
+  secret = NULL,
   session_token = NULL,
   service = "comprehend",
   ...
 ) {
     # locate and validate credentials
-    credentials <- locate_credentials(key = key, secret = secret, session_token = session_token, region = region, verbose = verbose)
+    credentials <- aws.signature::locate_credentials(key = key, secret = secret, session_token = session_token, region = region, verbose = verbose)
     key <- credentials[["key"]]
     secret <- credentials[["secret"]]
     session_token <- credentials[["session_token"]]
     region <- credentials[["region"]]
-    
+
     # generate request signature
     d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
     url <- paste0("https://", service, ".",region,".amazonaws.com")
@@ -64,7 +64,7 @@ function(
                                     "X-Amz-Target" = paste0(target_prefix, ".", action),
                                     "Content-Type" = "application/x-amz-json-1.1"),
            request_body = if (length(body)) jsonlite::toJSON(body, auto_unbox = TRUE) else "",
-           key = key, 
+           key = key,
            secret = secret,
            session_token = session_token,
            verbose = verbose)
@@ -78,14 +78,14 @@ function(
         headers[["x-amz-security-token"]] <- session_token
     }
     H <- do.call(add_headers, headers)
-    
+
     # execute request
     if (length(query)) {
         r <- POST(url, H, query = query, body = body, encode = "json", ...)
     } else {
         r <- POST(url, H, body = body, encode = "json", ...)
     }
-    
+
     if (http_error(r)) {
         x <- jsonlite::fromJSON(content(r, "text", encoding = "UTF-8"))
         warn_for_status(r)
