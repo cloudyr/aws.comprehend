@@ -23,8 +23,8 @@ Detect entities in a source text
 \dontrun{
   # simple example
   detect_entities("Amazon provides web services. Jeff is their leader.")
-  
-  txt <-c("Amazon provides web services.",
+
+  txt <-c("Amazon provides web services, like Microsoft and Google.",
           "Jeff is their leader.")
   detect_entities(txt)
 }
