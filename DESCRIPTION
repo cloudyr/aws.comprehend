@@ -5,8 +5,9 @@ Version: 0.1.2
 Date: 2018-04-09
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut"),
                     email = "thosjleeper@gmail.com",
-                    comment = c(ORCID = "0000-0003-4097-6326")))
-Maintainer: ORPHANED
+                    comment = c(ORCID = "0000-0003-4097-6326")),
+             person("Antoine", "Sachet", role = c("aut", "cre"),
+                    email = "antoine.sac@gmail.com"))
 Description: Client for 'AWS Comprehend' <https://aws.amazon.com/comprehend>, a cloud natural language processing service that can perform a number of quantitative text analyses, including language detection, sentiment analysis, and feature extraction.
 License: GPL (>= 2)
 URL: https://github.com/cloudyr/aws.comprehend
