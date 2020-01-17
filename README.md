@@ -13,11 +13,11 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "mykey",
            "AWS_SESSION_TOKEN" = "mytoken")
 ```
 
-
-
 ## Code Examples
 
 Here are some simple code examples:
+
+
 
 
 ```r
@@ -29,18 +29,18 @@ detect_language("This is a test sentence in English")
 
 ```
 ##   LanguageCode     Score
-## 1           en 0.9945121
+## 1           en 0.9729235
 ```
 
 ```r
 # multi-lingual language detection
-detect_language("A: ¡Hola! ¿Como está, usted?\nB: Ça va bien. Merci. Et toi?")
+detect_language("A: ¡Hola! ¿Como está, usted? B: Bien, merci. Et toi?")
 ```
 
 ```
 ##   LanguageCode     Score
-## 1           fr 0.6712779
-## 2           pt 0.2771675
+## 1           fr 0.7126021
+## 2           es 0.2452095
 ```
 
 ```r
@@ -49,8 +49,8 @@ detect_sentiment("I have never been happier. This is the best day ever.")
 ```
 
 ```
-##   Index Sentiment       Mixed    Negative    Neutral  Positive
-## 1     1  POSITIVE 0.002856119 0.003094881 0.03672606 0.9573229
+##   Index Sentiment       Mixed     Negative      Neutral  Positive
+## 1     1  POSITIVE 1.21042e-06 5.316024e-05 0.0003428663 0.9996029
 ```
 
 ```r
@@ -61,8 +61,8 @@ detect_entities(txt)
 
 ```
 ##   Index BeginOffset EndOffset     Score   Text         Type
-## 1     0           0         6 0.9960732 Amazon ORGANIZATION
-## 2     1           0         4 0.9994556   Jeff       PERSON
+## 1     0           0         6 0.9999992 Amazon ORGANIZATION
+## 2     1           0         4 1.0000000   Jeff       PERSON
 ```
 
 ```r
@@ -71,11 +71,29 @@ detect_phrases(txt)
 ```
 
 ```
-##   Index BeginOffset EndOffset     Score         Text
-## 1     0           0         6 0.9884282       Amazon
-## 2     1          16        28 0.9975396 web services
-## 3     0           0         4 0.9950518         Jeff
-## 4     1           8        20 0.9918150 their leader
+##   Index BeginOffset EndOffset Score         Text
+## 1     0           0         6     1       Amazon
+## 2     1          16        28     1 web services
+## 3     0           0         4     1         Jeff
+## 4     1           8        20     1 their leader
+```
+
+```r
+# syntax analysis
+detect_syntax("The quick fox jumps over the lazy dog.")
+```
+
+```
+##   Index BeginOffset EndOffset PartOfSpeech.Score PartOfSpeech.Tag  Text TokenId
+## 1     1           0         3          0.9999670              DET   The       1
+## 2     1           4         9          0.9966556              ADJ quick       2
+## 3     1          10        13          0.9957780             NOUN   fox       3
+## 4     1          14        19          0.8895551             VERB jumps       4
+## 5     1          20        24          0.9910401              ADP  over       5
+## 6     1          25        28          0.9999968              DET   the       6
+## 7     1          29        33          0.9885939              ADJ  lazy       7
+## 8     1          34        37          0.9999415             NOUN   dog       8
+## 9     1          37        38          0.9999982            PUNCT     .       9
 ```
 
 All of the functions accept either a single character string or a character vector.

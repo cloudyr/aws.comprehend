@@ -17,6 +17,11 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "mykey",
 
 Here are some simple code examples:
 
+```{r set-options, echo=FALSE, cache=FALSE}
+# to prevent data.frame wrapping in the outputs below
+options(width=120)
+```
+
 ```{r}
 library("aws.comprehend")
 
@@ -24,7 +29,7 @@ library("aws.comprehend")
 detect_language("This is a test sentence in English")
 
 # multi-lingual language detection
-detect_language("A: ¡Hola! ¿Como está, usted?\nB: Ça va bien. Merci. Et toi?")
+detect_language("A: ¡Hola! ¿Como está, usted? B: Bien, merci. Et toi?")
 
 # sentiment analysis
 detect_sentiment("I have never been happier. This is the best day ever.")
@@ -35,6 +40,9 @@ detect_entities(txt)
 
 # key phrase detection
 detect_phrases(txt)
+
+# syntax analysis
+detect_syntax("The quick fox jumps over the lazy dog.")
 ```
 
 All of the functions accept either a single character string or a character vector.
