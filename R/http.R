@@ -36,6 +36,11 @@ function(
     secret <- credentials[["secret"]]
     session_token <- credentials[["session_token"]]
     region <- credentials[["region"]]
+    
+    # Fail early if credentials cannot be found
+    if ((is.null(key) || is.null(secret)) && is.null(session_token)) {
+      stop("Unable to locate AWS credentials.")
+    }
 
     # generate request signature
     d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
