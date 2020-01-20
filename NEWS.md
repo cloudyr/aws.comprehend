@@ -3,6 +3,7 @@
 * **New feature:** `detect_syntax` function to perform syntax analysis (#14)
 * Better error message when AWS credentials are not provided (#15)
 * Fix missing import of `locate_credential` from `aws.signature` (#5)
+* Fix bug in batch `detect_entities` when documents have different numbers of entities (@MarcinKosinski, #12)
 * @antoine-sachet taking over as maintainer
 
 # aws.comprehend 0.1.2
