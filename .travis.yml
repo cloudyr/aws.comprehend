@@ -17,11 +17,13 @@ r_packages:
 - knitr
 - covr
 - drat
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ntpdate -u time.apple.com; fi
 after_success:
-- R -q -e 'library("covr");codecov()'
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && test
-  $DRAT_DEPLOY == "true" && bash drat.sh
-- R -q -e "travisci::restart_last_build('cloudyr/awspack')"
+  - R -q -e 'library("covr");codecov()'
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && test
+    $DRAT_DEPLOY == "true" && bash drat.sh
+  - R -q -e "travisci::restart_last_build('cloudyr/awspack')"
 env:
   global:
     secure: fQc8C9AwSh85TZx8Ch2gcG/79W21RQgTfJUOH+tdAI9rFR+/qI25JHQPoY/6PWukvw9RSzdqR+kH6HW9IGE0UcOzoCif5eueTL+XDbaetI8VhXD42YTZnh9UoRp8uLMyM194Izu+my1ivGf/Ng10hoB6om9YrKDst7m9vD3H51yYcPo7w6uB8udCqB+HgLvm/zj4ourgTua6opXWp4T9P0/hOTr6YHWbFt3oBGeRgA0bmGOO79YehI5LxFs07wVBES0n8YLhBPdJCLI4qcyWR6Y64ZVmsupaMs6wpWJC33eiC/rL/U2TY63ImH4iOwJ0MmZw/RqnoFr7IqhsMnUEtwP9F8GiTxpZDwXk7hnhOQwLcav/SqSOkIbTHsGbjCN5EsaJiAAJJHuJqA2NSXov4IbrAd0W0TwIOqZ1BU50IfBIOlDyV1YpHwsPesqpHYQLmrZR3jknC5EVEt69gQ/aah4wDUJuj9IPIXJVwNoL0sDzdMbSHCvlljSvW+N2q1rT/k/0ju5V/EOepk/xdj75Sc6DSfNTe1FGJfd0IXYfhQdjM5iAVewQvbEjQch1aIm7QS8gCJXMYgIr9LEu72a0n8XIEh2Z0S2TcCz/gwQN53kIPrG7Og8w9CdcQ0TI2ZgOZ0n1p4W9ctfnro4ZsboMhDCmfJ0t056Nof4E+8EEqGk=
