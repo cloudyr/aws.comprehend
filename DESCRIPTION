@@ -1,11 +1,13 @@
 Package: aws.comprehend
 Type: Package
 Title: 'AWS Comprehend' Client Package
-Version: 0.1.2
-Date: 2018-04-09
-Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
+Version: 0.1.2.9000
+Date: 2019-01-17
+Authors@R: c(person("Thomas J.", "Leeper", role = c("aut"),
                     email = "thosjleeper@gmail.com",
-                    comment = c(ORCID = "0000-0003-4097-6326")))
+                    comment = c(ORCID = "0000-0003-4097-6326")),
+             person("Antoine", "Sachet", role = c("aut", "cre"),
+                    email = "antoine.sac@gmail.com"))
 Description: Client for 'AWS Comprehend' <https://aws.amazon.com/comprehend>, a cloud natural language processing service that can perform a number of quantitative text analyses, including language detection, sentiment analysis, and feature extraction.
 License: GPL (>= 2)
 URL: https://github.com/cloudyr/aws.comprehend
@@ -17,4 +19,4 @@ Imports:
 Suggests:
     testthat
 Encoding: UTF-8
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
