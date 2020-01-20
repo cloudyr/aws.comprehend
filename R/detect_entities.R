@@ -9,7 +9,7 @@
 #'   # simple example
 #'   detect_entities("Amazon provides web services. Jeff is their leader.")
 #'   
-#'   txt <-c("Amazon provides web services.",
+#'   txt <-c("Amazon provides web services, like Google.",
 #'           "Jeff is their leader.")
 #'   detect_entities(txt)
 #' }
@@ -25,7 +25,7 @@ function(
         out <- comprehendHTTP(action = "BatchDetectEntities", body = bod, ...)
         # build response data frame
         x <- out$ResultList
-        x <- cbind(Index = x$Index, do.call("rbind", x$Entities))
+        x <- cbind(Index = rep(x$Index, unlist(lapply(x$Entities, nrow))), do.call("rbind", x$Entities))
         return(structure(x, ErrorList = out$ErrorList))
     } else {
         bod <- list(Text = text, LanguageCode = language)
