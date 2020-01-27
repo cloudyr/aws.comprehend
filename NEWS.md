@@ -5,6 +5,7 @@
 * Fix missing import of `locate_credential` from `aws.signature` (#5)
 * Fix bug in batch `detect_entities` when documents have different numbers of entities (@MarcinKosinski, #18)
 * @antoine-sachet taking over as maintainer
+* Addition of medical support for entities and phi (@dkincaid, #20)
 
 # aws.comprehend 0.1.2
 

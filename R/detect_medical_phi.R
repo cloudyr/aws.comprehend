@@ -14,7 +14,7 @@
 #'   medical_detect_phi(txt)
 #' }
 #' @export
-medical_detect_phi <-
+detect_medical_phi <-
 function(
   text,
   language = "en",

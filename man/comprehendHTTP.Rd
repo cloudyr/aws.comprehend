@@ -7,7 +7,8 @@
 comprehendHTTP(action, query = list(), headers = list(), body = NULL,
   verbose = getOption("verbose", FALSE),
   region = Sys.getenv("AWS_DEFAULT_REGION", "us-east-1"), key = NULL,
-  secret = NULL, session_token = NULL, service = "comprehend", ...)
+  secret = NULL, session_token = NULL, service = c("comprehend",
+  "comprehendmedical"), ...)
 }
 \arguments{
 \item{action}{A character string specifying the API action to take}

@@ -15,7 +15,7 @@
 #'   medical_detect_entities(txt)
 #' }
 #' @export
-medical_detect_entities <- function(text, language = "en", version = c("2", "1"), ...) {
+detect_medical_entities <- function(text, language = "en", version = c("2", "1"), ...) {
   version <- match.arg(version)
   operation <- switch(version,
                       "1" = "DetectEntities",
