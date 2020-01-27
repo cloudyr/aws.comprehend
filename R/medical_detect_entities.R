@@ -2,6 +2,7 @@
 #' @description Detect entities in a source medical text
 #' @param text A character string containing a text to entities analyze, or a character vector to perform analysis separately for each element.
 #' @param language A character string containing a two-letter language code. Currently only \dQuote{en} is supported.
+#' @param version A character string containing the version of the API that should be used. Currently only "1" or "2" are supported.
 #' @param \dots Additional arguments passed to \code{\link{comprehendHTTP}}.
 #' @return A data frame
 #' @examples
@@ -18,9 +19,18 @@ medical_detect_entities <-
 function(
   text,
   language = "en",
+  version = "2",
   ...
 ) {
+    if (version == "1") {
+      operation = "DetectEntities"
+    } else if (version == "2") {
+      operation = "DetectEntitiesV2"
+    } else {
+      stop("Unknown version")
+    }
+  
     bod <- list(Text = text, LanguageCode = language)
-    out <- comprehendHTTP(action = "DetectEntities", body = bod, service = "comprehendmedical", ...)
+    out <- comprehendHTTP(action = operation, body = bod, service = "comprehendmedical", ...)
     return(cbind(Index = 1, out$Entities))
 }
