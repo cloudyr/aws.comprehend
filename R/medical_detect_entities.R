@@ -15,22 +15,12 @@
 #'   medical_detect_entities(txt)
 #' }
 #' @export
-medical_detect_entities <-
-function(
-  text,
-  language = "en",
-  version = "2",
-  ...
-) {
-    if (version == "1") {
-      operation = "DetectEntities"
-    } else if (version == "2") {
-      operation = "DetectEntitiesV2"
-    } else {
-      stop("Unknown version")
-    }
-  
-    bod <- list(Text = text, LanguageCode = language)
-    out <- comprehendHTTP(action = operation, body = bod, service = "comprehendmedical", ...)
-    return(cbind(Index = 1, out$Entities))
+medical_detect_entities <- function(text, language = "en", version = c("2", "1"), ...) {
+  version <- match.arg(version)
+  operation <- switch(version,
+                      "1" = "DetectEntities",
+                      "2" = "DetectEntitiesV2")
+  bod <- list(Text = text, LanguageCode = language)
+  out <- comprehendHTTP(action = operation, body = bod, service = "comprehendmedical", ...)
+  return(cbind(Index = 1, out$Entities))
 }

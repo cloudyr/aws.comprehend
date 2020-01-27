@@ -30,7 +30,7 @@ function(
   key = NULL,
   secret = NULL,
   session_token = NULL,
-  service = "comprehend",
+  service = c("comprehend", "comprehendmedical"),
   ...
 ) {
     # locate and validate credentials
@@ -49,14 +49,11 @@ function(
     d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
     url <- paste0("https://", service, ".",region,".amazonaws.com")
     
-    if (service == "comprehend") {
-      target_prefix <- "Comprehend_20171127"
-    } else if (service == "comprehendmedical") {
-      target_prefix = "ComprehendMedical_20181030"
-    } else {
-      stop(paste0("Unknown service [", service, "]! Must be either comprehend or comprehendmedical."))
-    }
-    
+    service <- match.arg(service)
+    target_prefix <- switch(service,
+                            "comprehend" = "Comprehend_20171127",
+                            "comprehendmedical" = "ComprehendMedical_20181030")
+
     Sig <- signature_v4_auth(
            datetime = d_timestamp,
            region = region,
