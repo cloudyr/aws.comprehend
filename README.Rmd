@@ -19,7 +19,7 @@ Here are some simple code examples:
 
 ```{r set-options, echo=FALSE, cache=FALSE}
 # to prevent data.frame wrapping in the outputs below
-options(width=120)
+options(width = 150)
 ```
 
 ```{r}
@@ -43,6 +43,15 @@ detect_phrases(txt)
 
 # syntax analysis
 detect_syntax("The quick fox jumps over the lazy dog.")
+
+# medical entity detection
+medical_txt <- "Pt is 40yo mother, highschool teacher. HPI : Sleeping trouble on present dosage of Clonidine."
+detect_medical_entities(medical_txt)
+
+# Protected Health Information (PHI) detection
+detect_medical_phi(medical_txt)
+
+
 ```
 
 All of the functions accept either a single character string or a character vector.

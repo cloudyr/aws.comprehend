@@ -96,6 +96,31 @@ detect_syntax("The quick fox jumps over the lazy dog.")
 ## 9     1          37        38          0.9999982            PUNCT     .       9
 ```
 
+```r
+# medical entity detection
+medical_txt <- "Pt is 40yo mother, highschool teacher. HPI : Sleeping trouble on present dosage of Clonidine."
+detect_medical_entities(medical_txt)
+```
+
+```
+##   Index BeginOffset                     Category EndOffset Id     Score               Text                    Traits         Type
+## 1     1           6 PROTECTED_HEALTH_INFORMATION        10  0 0.9982511               40yo                      NULL          AGE
+## 2     1          19 PROTECTED_HEALTH_INFORMATION        37  1 0.4113526 highschool teacher                      NULL   PROFESSION
+## 3     1          45            MEDICAL_CONDITION        61  3 0.7587468   Sleeping trouble SYMPTOM, 0.52603405714035      DX_NAME
+## 4     1          83                   MEDICATION        92  2 0.9932888          Clonidine                      NULL GENERIC_NAME
+```
+
+```r
+# Protected Health Information (PHI) detection
+detect_medical_phi(medical_txt)
+```
+
+```
+##   Index BeginOffset                     Category EndOffset Id     Score               Text Traits       Type
+## 1     1           6 PROTECTED_HEALTH_INFORMATION        10  0 0.9982511               40yo   NULL        AGE
+## 2     1          19 PROTECTED_HEALTH_INFORMATION        37  1 0.4113526 highschool teacher   NULL PROFESSION
+```
+
 All of the functions accept either a single character string or a character vector.
 
 ## Installation
