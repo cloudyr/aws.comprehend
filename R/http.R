@@ -9,6 +9,8 @@
 #' @param key A character string containing an AWS Access Key ID. See \code{\link[aws.signature]{locate_credentials}}.
 #' @param secret A character string containing an AWS Secret Access Key. See \code{\link[aws.signature]{locate_credentials}}.
 #' @param session_token A character string containing an AWS Session Token. See \code{\link[aws.signature]{locate_credentials}}.
+#' @param service the Comprehend service to use. Currently either `comprehend` for the base service or `comprehendmedical`
+#' for the Comprehend Medical service.
 #' @param \dots Additional arguments passed to \code{\link[httr]{GET}}.
 #' @return If successful, a named list. Otherwise, a data structure of class \dQuote{aws-error} containing any error message(s) from AWS and information about the request attempt.
 #' @details This function constructs and signs an Polly API request and returns the results thereof, or relevant debugging information in the case of error.
@@ -28,6 +30,7 @@ function(
   key = NULL,
   secret = NULL,
   session_token = NULL,
+  service = c("comprehend", "comprehendmedical"),
   ...
 ) {
     # locate and validate credentials
@@ -42,19 +45,25 @@ function(
       stop("Unable to locate AWS credentials.")
     }
 
+    service <- match.arg(service)
+    target_prefix <- switch(service,
+                            "comprehend" = "Comprehend_20171127",
+                            "comprehendmedical" = "ComprehendMedical_20181030")
+
     # generate request signature
     d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
-    url <- paste0("https://comprehend.",region,".amazonaws.com")
+    url <- paste0("https://", service, ".",region,".amazonaws.com")
+
     Sig <- signature_v4_auth(
            datetime = d_timestamp,
            region = region,
-           service = "comprehend",
+           service = service,
            verb = "POST",
            action = "/",
            query_args = query,
-           canonical_headers = list(host = paste0("comprehend.",region,".amazonaws.com"),
+           canonical_headers = list(host = paste0(service,".",region,".amazonaws.com"),
                                     `x-amz-date` = d_timestamp,
-                                    "X-Amz-Target" = paste0("Comprehend_20171127.", action),
+                                    "X-Amz-Target" = paste0(target_prefix, ".", action),
                                     "Content-Type" = "application/x-amz-json-1.1"),
            request_body = if (length(body)) jsonlite::toJSON(body, auto_unbox = TRUE) else "",
            key = key,
@@ -63,7 +72,7 @@ function(
            verbose = verbose)
     # setup request headers
     headers[["x-amz-date"]] <- d_timestamp
-    headers[["X-Amz-Target"]] <- paste0("Comprehend_20171127.", action)
+    headers[["X-Amz-Target"]] <- paste0(target_prefix, ".", action)
     headers[["x-amz-content-sha256"]] <- Sig$BodyHash
     headers[["Content-Type"]] <- "application/x-amz-json-1.1"
     headers[["Authorization"]] <- Sig[["SignatureHeader"]]
