@@ -45,14 +45,14 @@ function(
       stop("Unable to locate AWS credentials.")
     }
 
-    # generate request signature
-    d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
-    url <- paste0("https://", service, ".",region,".amazonaws.com")
-    
     service <- match.arg(service)
     target_prefix <- switch(service,
                             "comprehend" = "Comprehend_20171127",
                             "comprehendmedical" = "ComprehendMedical_20181030")
+
+    # generate request signature
+    d_timestamp <- format(Sys.time(), "%Y%m%dT%H%M%SZ", tz = "UTC")
+    url <- paste0("https://", service, ".",region,".amazonaws.com")
 
     Sig <- signature_v4_auth(
            datetime = d_timestamp,
