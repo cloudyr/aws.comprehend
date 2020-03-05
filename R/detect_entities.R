@@ -29,6 +29,6 @@ function(
     } else {
         bod <- list(Text = text, LanguageCode = language)
         out <- comprehendHTTP(action = "DetectEntities", body = bod, ...)
-        return(cbind(Index = 1, out$Entities))
+        return(cbind(Index = 0, out$Entities))
     }
 }

@@ -30,6 +30,6 @@ function(
     } else {
         bod <- list(Text = text, LanguageCode = language)
         out <- comprehendHTTP(action = "DetectSentiment", body = bod, ...)
-        return(cbind(Index = 1, as.data.frame(c(list(Sentiment = out$Sentiment), out$SentimentScore))))
+        return(cbind(Index = 0, as.data.frame(c(list(Sentiment = out$Sentiment), out$SentimentScore))))
     }
 }

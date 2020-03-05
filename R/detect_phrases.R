@@ -28,6 +28,6 @@ function(
     } else {
         bod <- list(Text = text, LanguageCode = language)
         out <- comprehendHTTP(action = "DetectKeyPhrases", body = bod, ...)
-        return(cbind(Index = 1, out$KeyPhrases))
+        return(cbind(Index = 0, out$KeyPhrases))
     }
 }

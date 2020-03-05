@@ -30,6 +30,6 @@ function(
     } else {
         bod <- list(Text = text)
         out <- comprehendHTTP(action = "DetectDominantLanguage", body = bod, ...)
-        return(out$Languages)
+        return(cbind(Index = 0, out$Languages))
     }
 }

@@ -22,5 +22,5 @@ function(
 ) {
     bod <- list(Text = text, LanguageCode = language)
     out <- comprehendHTTP(action = "DetectPHI", body = bod, service = "comprehendmedical", ...)
-    return(cbind(Index = 1, out$Entities))
+    return(cbind(Index = 0, out$Entities))
 }

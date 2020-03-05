@@ -30,6 +30,6 @@ detect_syntax <-
       out <- comprehendHTTP(action = "DetectSyntax", body = bod, ...)
       # fixing nested 'PartOfSpeech' df
       x <- as.data.frame(as.list(out$SyntaxTokens))
-      return(cbind(Index = 1, x))
+      return(cbind(Index = 0, x))
     }
   }
