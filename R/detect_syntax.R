@@ -23,16 +23,8 @@ detect_syntax <-
     if (length(text) > 1L) {
       bod <- list(TextList = text, LanguageCode = language)
       out <- comprehendHTTP(action = "BatchDetectSyntax", body = bod, ...)
-      # build response data frame
-      res_list <- mapply(out$ResultList$Index, out$ResultList$SyntaxTokens,
-                  FUN = function(index, df) {
-                    # fixing nested 'PartOfSpeech' df
-                    df <- as.data.frame(as.list(df))
-                    # rep handles case where nrow(df) is 0
-                    cbind(Index = rep(index, nrow(df)), df)
-                  }, SIMPLIFY = FALSE, USE.NAMES = FALSE)
-      res <- do.call(rbind, res_list)
-      return(structure(res, ErrorList = out$ErrorList))
+      x <- bind_and_index(out$ResultList$Index, out$ResultList$SyntaxTokens)
+      return(structure(x, ErrorList = out$ErrorList))
     } else {
       bod <- list(Text = text, LanguageCode = language)
       out <- comprehendHTTP(action = "DetectSyntax", body = bod, ...)

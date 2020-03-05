@@ -25,10 +25,7 @@ function(
     if (length(text) > 1L) {
         bod <- list(TextList = text)
         out <- comprehendHTTP(action = "BatchDetectDominantLanguage", body = bod, ...)
-        
-        # build response data frame
-        x <- out$ResultList
-        x <- cbind(Index = x$Index, do.call("rbind", x$Languages))
+        x <- bind_and_index(out$ResultList$Index, out$ResultList$Languages)
         return(structure(x, ErrorList = out$ErrorList))
     } else {
         bod <- list(Text = text)
