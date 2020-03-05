@@ -7,7 +7,8 @@
 comprehendHTTP(action, query = list(), headers = list(), body = NULL,
   verbose = getOption("verbose", FALSE),
   region = Sys.getenv("AWS_DEFAULT_REGION", "us-east-1"), key = NULL,
-  secret = NULL, session_token = NULL, ...)
+  secret = NULL, session_token = NULL, service = c("comprehend",
+  "comprehendmedical"), ...)
 }
 \arguments{
 \item{action}{A character string specifying the API action to take}
@@ -27,6 +28,9 @@ comprehendHTTP(action, query = list(), headers = list(), body = NULL,
 \item{secret}{A character string containing an AWS Secret Access Key. See \code{\link[aws.signature]{locate_credentials}}.}
 
 \item{session_token}{A character string containing an AWS Session Token. See \code{\link[aws.signature]{locate_credentials}}.}
+
+\item{service}{the Comprehend service to use. Currently either `comprehend` for the base service or `comprehendmedical`
+for the Comprehend Medical service.}
 
 \item{\dots}{Additional arguments passed to \code{\link[httr]{GET}}.}
 }

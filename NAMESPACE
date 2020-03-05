@@ -3,6 +3,8 @@
 export(comprehendHTTP)
 export(detect_entities)
 export(detect_language)
+export(detect_medical_entities)
+export(detect_medical_phi)
 export(detect_phrases)
 export(detect_sentiment)
 export(detect_syntax)
