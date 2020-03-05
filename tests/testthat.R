@@ -1,4 +1,4 @@
-library("testthat")
-library("aws.comprehend")
+library(testthat)
+library(aws.comprehend)
 
-#test_check("aws.comprehend")
+test_check("aws.comprehend")
