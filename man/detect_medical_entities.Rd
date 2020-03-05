@@ -4,8 +4,7 @@
 \alias{detect_medical_entities}
 \title{Detect named entities in a source medical text}
 \usage{
-detect_medical_entities(text, language = "en", version = c("2", "1"),
-  ...)
+detect_medical_entities(text, language = "en", version = c("2", "1"), ...)
 }
 \arguments{
 \item{text}{A character string containing a text to entities analyze, or a character vector to perform analysis separately for each element.}
