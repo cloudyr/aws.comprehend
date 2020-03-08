@@ -28,8 +28,8 @@ detect_syntax <-
     } else {
       bod <- list(Text = text, LanguageCode = language)
       out <- comprehendHTTP(action = "DetectSyntax", body = bod, ...)
-      # fixing nested 'PartOfSpeech' df
-      x <- as.data.frame(as.list(out$SyntaxTokens))
+      # Fix nested 'PartOfSpeech' df. `flatten` is defined in bind_and_index.R.
+      x <- flatten(out$SyntaxTokens)
       return(cbind(Index = 0, x))
     }
   }

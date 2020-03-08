@@ -8,7 +8,7 @@
 #' \dontrun{
 #'   # simple example
 #'   detect_sentiment("I have never been happier. This is the best day ever.")
-#'   
+#'
 #'   txt <-c("I have never been happier. This is the best day ever.",
 #'           "I have always been happier. This is the worst day ever.")
 #'   detect_sentiment(txt)
@@ -24,12 +24,16 @@ function(
         bod <- list(TextList = text, LanguageCode = language)
         out <- comprehendHTTP(action = "BatchDetectSentiment", body = bod, ...)
         # build response data frame
-        x <- out$ResultList
-        x <- cbind(x[c("Index", "Sentiment")], x[["SentimentScore"]])
-        return(structure(x, ErrorList = out$ErrorList))
+        formatted <- cbind(out$ResultList[c("Index", "Sentiment")],
+                           out$ResultList[["SentimentScore"]])
+        return(structure(formatted, ErrorList = out$ErrorList))
     } else {
         bod <- list(Text = text, LanguageCode = language)
         out <- comprehendHTTP(action = "DetectSentiment", body = bod, ...)
-        return(cbind(Index = 0, as.data.frame(c(list(Sentiment = out$Sentiment), out$SentimentScore))))
+        formatted <- cbind(Index = 0,
+                           Sentiment = out$Sentiment,
+                           flatten(out$SentimentScore),
+                           stringsAsFactors = FALSE)
+        return(formatted)
     }
 }
