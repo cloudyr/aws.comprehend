@@ -13,10 +13,10 @@ test_that("Handles different number of records", {
 test_that("Handles empty records", {
   res <- bind_and_index(1:2, list(data.frame(col = "a"), data.frame()))
   expect_equal(res, data.frame(Index = c(1), col = c("a")))
-  
+
   res <- bind_and_index(1:2, list(data.frame(), data.frame(col = "b")))
   expect_equal(res, data.frame(Index = c(2), col = c("b")))
-  
+
   res <- bind_and_index(1:3, list(data.frame(col = "a"), data.frame(), data.frame(col = "c")))
   expect_equal(res, data.frame(Index = c(1, 3), col = c("a", "c")))
 })
@@ -36,7 +36,7 @@ batch_results <- readRDS(test_path("batch_results.rds"))
 #   "A+",
 #   "AWS provides numerous services."),
 #   LanguageCode = "en")
-# 
+#
 # body_language <- list(TextList = c(
 #   "Bonjour, comment vas-tu?",
 #   "Hi, how are you?",
@@ -54,9 +54,9 @@ batch_results <- readRDS(test_path("batch_results.rds"))
 test_that("Works with BatchDetectEntities", {
   res_list <- batch_results$Entities$ResultList
   output <- bind_and_index(res_list$Index, df_list = res_list$Entities)
-  
-  expected <- read.table(sep = "\t", 
-                         header = TRUE, 
+
+  expected <- read.table(sep = "\t",
+                         header = TRUE,
                          stringsAsFactors = FALSE,
                          text = "
   Index	BeginOffset	EndOffset	Score	Text	Type
@@ -64,16 +64,16 @@ test_that("Works with BatchDetectEntities", {
   0	23	26	0.6394255	CEO	PERSON
   2	 0	 3	0.9972390	AWS	ORGANIZATION
   2	13	21	0.5615919	numerous	QUANTITY")
-  
-  expect_equal(output, expected, tolerance = 1e-3)
+
+  expect_similar(output, expected)
 })
 
 test_that("Works with BatchDetectKeyPhrases", {
   res_list <- batch_results$KeyPhrases$ResultList
   output <- bind_and_index(res_list$Index, df_list = res_list$KeyPhrases)
-  
-  expected <- read.table(sep = "\t", 
-                         header = TRUE, 
+
+  expected <- read.table(sep = "\t",
+                         header = TRUE,
                          stringsAsFactors = FALSE,
                          text = "
   Index	BeginOffset	EndOffset	Score	Text
@@ -81,16 +81,16 @@ test_that("Works with BatchDetectKeyPhrases", {
   0	14	26	1	a famous CEO
   2	 0	 3	1	AWS
   2	13	30	1	numerous services")
-  
-  expect_equal(output, expected)
+
+  expect_similar(output, expected)
 })
 
 test_that("Works with BatchDetectSyntax", {
   res_list <- batch_results$Syntax$ResultList
   output <- bind_and_index(res_list$Index, df_list = res_list$SyntaxTokens)
-  
-  expected <- read.table(sep = "\t", 
-                         header = TRUE, 
+
+  expected <- read.table(sep = "\t",
+                         header = TRUE,
                          stringsAsFactors = FALSE,
                          text = "
   Index	BeginOffset	EndOffset	PartOfSpeech.Score	PartOfSpeech.Tag	Text	TokenId
@@ -108,16 +108,16 @@ test_that("Works with BatchDetectSyntax", {
   2	13	21	0.9966282	ADJ	numerous	3
   2	22	30	0.9999441	NOUN	services	4
   2	30	31	0.9999958	PUNCT	.	5")
-  
-  expect_equal(output, expected, tolerance = 1e-3)
+
+  expect_similar(output, expected)
 })
 
 test_that("Works with BatchDetectDominantLanguage", {
   res_list <- batch_results$Language$ResultList
   output <- bind_and_index(res_list$Index, df_list = res_list$Languages)
-  
-  expected <- read.table(sep = "\t", 
-                         header = TRUE, 
+
+  expected <- read.table(sep = "\t",
+                         header = TRUE,
                          stringsAsFactors = FALSE,
                          text = "
   Index	LanguageCode	Score
@@ -126,6 +126,6 @@ test_that("Works with BatchDetectDominantLanguage", {
   2	en	0.75387710
   2	fr	0.11801571
   2	it	0.07860542")
-  
-  expect_equal(output, expected, tolerance = 1e-3)
+
+  expect_similar(output, expected)
 })
