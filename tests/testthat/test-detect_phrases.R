@@ -14,7 +14,7 @@ test_that("detect_phrases works on single string", {
   0	 0	10	1	Jeff Bezos
   0	14	26	1	a famous CEO", header=TRUE, stringsAsFactors=FALSE)
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 
@@ -33,7 +33,7 @@ test_that("detect_phrases works on character vector", {
   2	13	30	1	numerous services", header=TRUE, stringsAsFactors=FALSE)
   attr(expected, "ErrorList") <- list()
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 

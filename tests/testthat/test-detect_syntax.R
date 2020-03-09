@@ -19,7 +19,7 @@ test_that("detect_syntax works on single string", {
   0	23	26	0.6596355	NOUN	CEO	6
   0	26	27	0.9999983	PUNCT	.	7", header=TRUE, stringsAsFactors=FALSE)
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 
@@ -48,7 +48,7 @@ test_that("detect_syntax works on character vector", {
   2	30	31	0.9999958	PUNCT	.	5", header=TRUE, stringsAsFactors=FALSE)
   attr(expected, "ErrorList") <- list()
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 

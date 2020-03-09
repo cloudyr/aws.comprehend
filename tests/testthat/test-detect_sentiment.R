@@ -14,7 +14,7 @@ test_that("detect_sentiment works on single string", {
   0	POSITIVE	4.089085e-06	0.008974612	0.2708658	0.7201555",
                          header=TRUE, stringsAsFactors=FALSE)
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 
@@ -33,7 +33,7 @@ test_that("detect_sentiment works on character vector", {
                          header=TRUE, stringsAsFactors=FALSE)
   attr(expected, "ErrorList") <- list()
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 

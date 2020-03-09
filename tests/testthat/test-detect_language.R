@@ -12,7 +12,7 @@ test_that("detect_language works on single string", {
   Index	LanguageCode	Score
   0	en	0.9962505", header=TRUE, stringsAsFactors=FALSE)
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 
@@ -29,7 +29,7 @@ test_that("detect_language works on character vector", {
   1	en	0.9997292", header=TRUE, stringsAsFactors=FALSE)
   attr(expected, "ErrorList") <- list()
 
-  expect_similar(output, expected, tolerance = 1e-1)
+  expect_similar(output, expected)
 
 })
 
