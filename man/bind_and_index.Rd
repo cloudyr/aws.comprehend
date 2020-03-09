@@ -21,7 +21,7 @@ into a single indexed data.frame. Useful to process a ResultList from `comprehen
 bind_and_index(1:2, list(data.frame(col = "a"), data.frame(col = "b")))
 
 bind_and_index(1:3, list(
-     data.frame(col = "a"), 
-     data.frame(), 
+     data.frame(col = "a"),
+     data.frame(),
      data.frame(c("b", "c"))))
 }
