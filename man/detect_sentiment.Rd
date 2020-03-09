@@ -23,7 +23,7 @@ Detect sentiment in a source text
 \dontrun{
   # simple example
   detect_sentiment("I have never been happier. This is the best day ever.")
-  
+
   txt <-c("I have never been happier. This is the best day ever.",
           "I have always been happier. This is the worst day ever.")
   detect_sentiment(txt)

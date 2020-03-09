@@ -24,12 +24,11 @@ function(
         bod <- list(TextList = text, LanguageCode = language)
         out <- comprehendHTTP(action = "BatchDetectEntities", body = bod, ...)
         # build response data frame
-        x <- out$ResultList
-        x <- cbind(Index = rep(x$Index, unlist(lapply(x$Entities, nrow))), do.call("rbind", x$Entities))
+        x <- bind_and_index(out$ResultList$Index, out$ResultList$Entities)
         return(structure(x, ErrorList = out$ErrorList))
     } else {
         bod <- list(Text = text, LanguageCode = language)
         out <- comprehendHTTP(action = "DetectEntities", body = bod, ...)
-        return(cbind(Index = 1, out$Entities))
+        return(cbind(Index = 0, out$Entities))
     }
 }

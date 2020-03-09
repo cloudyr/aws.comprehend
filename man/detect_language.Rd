@@ -23,7 +23,7 @@ Detect language(s) in a source text
   detect_language("This is a test sentence in English")
   
   # two languages in a single text
-  txt <- "A: ¡Hola! ¿Como está, usted?\\nB: Ça va bien. Merci. Et toi?"
+  txt <- "A: ¡Hola! ¿Como está, usted?\nB: Ça va bien. Merci. Et toi?"
   detect_language(txt)
 
   # "batch" mode

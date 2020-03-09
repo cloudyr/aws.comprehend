@@ -1,3 +1,9 @@
+# aws.comprehend 0.2.1 (in development)
+
+* Refactor batch response processing to improve reliability (#21)
+* Index now 0-based everywhere. Used to be 0-based for batch operations and 1-based for single operations (#11)
+* Add test suite for detect_* and detect_medical_*_functions
+
 # aws.comprehend 0.2.0
 
 ### New features
