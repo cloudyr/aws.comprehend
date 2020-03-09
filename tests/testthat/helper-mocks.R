@@ -24,9 +24,9 @@ get_request_body <- function() {
     single_language = list(
       Text = "This text is in English."),
 
-    # Request body for medical entities and PHI
     medical = list(
-      Text = "Pt is 40yo mother, highschool teacher. HPI : Sleeping trouble on present dosage of Clonidine."
+      Text = "Pt is 40yo mother, highschool teacher. HPI : Sleeping trouble on present dosage of Clonidine.",
+      LanguageCode = "en"
     )
   )
 }
@@ -63,7 +63,6 @@ generate_mocks <- function() {
 
     "DetectDominantLanguage" = body$single_language,
     "BatchDetectDominantLanguage" = body$batch_language
-
   )
 
   mapply(generate_mock, names(actions), actions)
