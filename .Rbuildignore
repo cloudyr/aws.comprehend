@@ -4,9 +4,9 @@ CONTRIBUTING.md
 README.Rmd
 Makefile
 drat.sh
-knitreadme.sh
 ^revdep$
 ^man-roxygen$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github.?
+^cran-comments\.md$
