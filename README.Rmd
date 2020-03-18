@@ -1,6 +1,81 @@
 # AWS Comprehend Client Package
 
+
+[![CRAN](https://www.r-pkg.org/badges/version/aws.comprehend)](https://cran.r-project.org/package=aws.comprehend)
+![Downloads](https://cranlogs.r-pkg.org/badges/aws.comprehend)
+[![Travis Build Status](https://travis-ci.org/cloudyr/aws.comprehend.png?branch=master)](https://travis-ci.org/cloudyr/aws.comprehend)
+[![codecov.io](https://codecov.io/github/cloudyr/aws.comprehend/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/aws.comprehend?branch=master)
+
+
 **aws.comprehend** is a package for natural language processing.
+
+## Code Examples
+
+
+All of the functions (except `detect_medical_*`) accept either a single character string or a character vector. Note that AWS currently limits batch queries to 25 documents, so character vectors should have 25 elements maximum.
+
+The default language is English (`"en"`) but this is easily changed using the `language` argument.
+
+
+```{r set-options, echo=FALSE, cache=FALSE}
+# to prevent data.frame wrapping in the outputs below
+options(width = 150)
+```
+
+### Sentiment analysis
+
+```{r}
+library("aws.comprehend")
+
+detect_sentiment("I have never been happier. This is the best day ever.")
+
+# Sentiment analysis in Spanish
+detect_sentiment("¡Hoy estoy feliz!", language = "es")
+```
+
+### Language detection
+
+```{r}
+# simple language detection
+detect_language("This is a test sentence in English")
+
+# multi-lingual language detection
+detect_language("A: ¡Hola! ¿Como está, usted? B: Bien, merci. Et toi?")
+```
+
+### Named Entity Recognition
+
+```{r}
+txt <- c("Amazon provides web services.", "Jeff is their leader.")
+detect_entities(txt)
+```
+
+### Key Phrase Detection
+
+```{r}
+txt <- c("Amazon provides web services.", "Jeff is their leader.")
+detect_phrases(txt)
+```
+
+### Syntax Analysis
+
+```{r}
+detect_syntax("The quick fox jumps over the lazy dog.")
+```
+
+### Medical Entity and Personal Health Information (PHI) Detection
+
+```{r}
+# medical entity detection
+medical_txt <- "Pt is 40yo mother, highschool teacher. HPI : Sleeping trouble on present dosage of Clonidine."
+detect_medical_entities(medical_txt)
+
+# Protected Health Information (PHI) detection
+detect_medical_phi(medical_txt)
+```
+
+
+## Setting up credentials
 
 To use the package, you will need an AWS account and to enter your credentials into R. Your keypair can be generated on the [IAM Management Console](https://aws.amazon.com/) under the heading *Access Keys*. Note that you only have access to your secret key once. After it is generated, you need to save it in a secure location. New keypairs can be generated at any time if yours has been lost, stolen, or forgotten. The [**aws.iam** package](https://github.com/cloudyr/aws.iam) profiles tools for working with IAM, including creating roles, users, groups, and credentials programmatically; it is not needed to *use* IAM credentials.
 
@@ -13,72 +88,25 @@ Sys.setenv("AWS_ACCESS_KEY_ID" = "mykey",
            "AWS_SESSION_TOKEN" = "mytoken")
 ```
 
-## Code Examples
-
-Here are some simple code examples:
-
-```{r set-options, echo=FALSE, cache=FALSE}
-# to prevent data.frame wrapping in the outputs below
-options(width = 150)
-```
-
-```{r}
-library("aws.comprehend")
-
-# simple language detection
-detect_language("This is a test sentence in English")
-
-# multi-lingual language detection
-detect_language("A: ¡Hola! ¿Como está, usted? B: Bien, merci. Et toi?")
-
-# sentiment analysis
-detect_sentiment("I have never been happier. This is the best day ever.")
-
-# named entity recognition
-txt <- c("Amazon provides web services.", "Jeff is their leader.")
-detect_entities(txt)
-
-# key phrase detection
-detect_phrases(txt)
-
-# syntax analysis
-detect_syntax("The quick fox jumps over the lazy dog.")
-
-# medical entity detection
-medical_txt <- "Pt is 40yo mother, highschool teacher. HPI : Sleeping trouble on present dosage of Clonidine."
-detect_medical_entities(medical_txt)
-
-# Protected Health Information (PHI) detection
-detect_medical_phi(medical_txt)
-
-
-```
-
-All of the functions accept either a single character string or a character vector.
 
 ## Installation
 
-[![CRAN](https://www.r-pkg.org/badges/version/aws.comprehend)](https://cran.r-project.org/package=aws.comprehend)
-![Downloads](https://cranlogs.r-pkg.org/badges/aws.comprehend)
-[![Travis Build Status](https://travis-ci.org/cloudyr/aws.comprehend.png?branch=master)](https://travis-ci.org/cloudyr/aws.comprehend)
-[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/PROJECTNUMBER?svg=true)](https://ci.appveyor.com/project/cloudyr/aws.comprehend)
-[![codecov.io](https://codecov.io/github/cloudyr/aws.comprehend/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/aws.comprehend?branch=master)
-
-This package is not yet on CRAN. To install the latest development version you can install from the cloudyr drat repository:
+You can install this package from CRAN or, to install the latest development version, from the cloudyr drat repository:
 
 ```R
-# latest stable version
-install.packages("aws.comprehend", repos = c(cloudyr = "http://cloudyr.github.io/drat", getOption("repos")))
+# Install from CRAN
+install.packages("aws.comprehend")
+
+# Latest version passing CI tests, from drat repo
+install.packages("aws.comprehend", repos = c(getOption("repos"), "http://cloudyr.github.io/drat"))
 ```
 
-Or, to pull a potentially unstable version directly from GitHub:
+You can also pull a potentially unstable version directly from GitHub, using the `remotes` package:
 
 ```R
-if (!require("remotes")) {
-    install.packages("remotes")
-}
 remotes::install_github("cloudyr/aws.comprehend")
 ```
+
 
 ---
 [![cloudyr project logo](https://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
