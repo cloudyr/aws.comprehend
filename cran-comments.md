@@ -11,7 +11,6 @@ There were no ERRORs, no WARNINGs and 1 NOTE at the end of the check.
 The note was:
 
 """
-Maintainer: ‘Antoine Sachet <antoine.sac@gmail.com>’
 New submission
 Package was archived on CRAN
 CRAN repository db overrides:
@@ -20,8 +19,8 @@ CRAN repository db overrides:
 
 # Other notes
 
-This package was on CRAN from 2018-04-12 to 2020-01-12 when it was archived as the package became orphaned.
+1. This is a RESUBMISSION - I removed 'package' from the title as requested.
 
-The URL of the project is https://github.com/cloudyr/aws.comprehend
-I am the new maintainer and I am keen to get the updated package back on CRAN. Thanks!
+2. This package was on CRAN from 2018-04-12 to 2020-01-12 when it was archived as the package became orphaned.
+   I am the new maintainer and I am keen to get the updated package back on CRAN. Thanks!
 
