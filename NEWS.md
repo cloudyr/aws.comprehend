@@ -1,5 +1,8 @@
+# aws.comprehend (development version)
+
 # aws.comprehend 0.2.1
 
+* Released on CRAN 2020-03-18
 * Refactor batch response processing to improve reliability (#21)
 * Index now 0-based everywhere. Used to be 0-based for batch operations and 1-based for single operations (#11)
 * Add test suite for detect_* and detect_medical_*_functions

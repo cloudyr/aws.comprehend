@@ -1,7 +1,7 @@
 Package: aws.comprehend
 Type: Package
 Title: Client for 'AWS Comprehend'
-Version: 0.2.1
+Version: 0.2.1.9000
 Date: 2020-03-10
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut"),
                     email = "thosjleeper@gmail.com",
