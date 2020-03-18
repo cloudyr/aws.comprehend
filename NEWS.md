@@ -1,5 +1,3 @@
-# aws.comprehend 0.2.2 (in development)
-
 # aws.comprehend 0.2.1
 
 * Refactor batch response processing to improve reliability (#21)
