@@ -20,7 +20,10 @@ generate_mocks_medical <- function() {
   actions <- list(
     "DetectPHI" = body$medical,
     "DetectEntities" = body$medical,
-    "DetectEntitiesV2" = body$medical
+    "DetectEntitiesV2" = body$medical,
+    "InferICD10CM" = body$medical,
+    "InferRxNorm" = body$medical,
+    "InferSNOMEDCT" = body$medical
   )
 
   mapply(generate_mock_medical, names(actions), actions)

@@ -1,5 +1,7 @@
 # aws.comprehend (development version)
 
+* Added `infer_icd10`, `infer_rxnorm`, and `infer_snowmed_ct` functions to call Comprehend Medical's ontology linking APIs.
+
 # aws.comprehend 0.2.1
 
 * Released on CRAN 2020-03-18
