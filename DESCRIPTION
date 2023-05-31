@@ -9,7 +9,9 @@ Authors@R: c(person("Thomas J.", "Leeper", role = c("aut"),
              person("Antoine", "Sachet", role = c("aut", "cre"),
                     email = "antoine.sac@gmail.com"),
              person("Dave", "Kincaid", role = c("ctb"),
-                    email = "dave@kincaidlabs.ai"))
+                    email = "dave@kincaidlabs.ai"),
+             person("Robert", "Norberg", role = c("ctb"),
+                    email = "Robert.Norberg@moffitt.org"))
 Description: Client for 'AWS Comprehend' <https://aws.amazon.com/comprehend>, a cloud natural language processing service that can perform a number of quantitative text analyses, including language detection, sentiment analysis, and feature extraction.
 License: GPL (>= 2)
 URL: https://github.com/cloudyr/aws.comprehend
